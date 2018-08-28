@@ -1,21 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux';
+import { fetchUser } from './actions';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  searchUser = (event) => {
+    this.props.fetchUser(event.target.value);
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+      <div>
+        <h2>Github Search:</h2>
+        <input placeholder='Username' onChange={this.searchUser} />
+        <p>
+          <img src={this.props.image} alt='Not Found' width={100} />
         </p>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  image: state.user.avatar_url
+});
+
+const mapDispatchToProps = {
+  fetchUser
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

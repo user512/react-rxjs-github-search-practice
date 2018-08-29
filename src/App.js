@@ -4,10 +4,6 @@ import { fetchUser } from './actions';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   searchUser = (event) => {
     this.props.fetchUser(event.target.value);
   }

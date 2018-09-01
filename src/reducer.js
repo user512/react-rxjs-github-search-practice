@@ -7,13 +7,21 @@ export const user = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USER_SUCCESS:
       return action.payload.user
-    case FETCH_USER_FAILED:
-      return {};
     default:
       return state;
   }
 };
 
+export const error = (state = "" , action) => {
+  switch (action.type) {
+    case FETCH_USER_FAILED:
+      return action.payload
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
-  user
+  user,
+  error
 });

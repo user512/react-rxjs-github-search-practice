@@ -9,6 +9,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <h2>Github Search:</h2>
@@ -16,14 +17,20 @@ class App extends Component {
         <p>
           <img src={this.props.image} alt='Not Found' width={100} />
         </p>
+        <p>Error: {this.props.error}</p>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  image: state.user.avatar_url
-});
+const mapStateToProps = state => {
+console.log(state);
+  return {
+    image: state.user.avatar_url,
+    error: state.error
+  }
+    
+  };
 
 const mapDispatchToProps = {
   fetchUser

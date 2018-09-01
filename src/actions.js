@@ -12,6 +12,6 @@ export const fetchUserSuccess = user => ({
 
 export const fetchUserFailed = error => ({
   type: FETCH_USER_FAILED,
-  payload: { error },
+  payload:  error.error.response,
   error: true
 });

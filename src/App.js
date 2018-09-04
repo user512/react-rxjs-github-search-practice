@@ -27,9 +27,9 @@ const mapStateToProps = state => {
 console.log(state);
   return {
     image: state.user.avatar_url,
-    error: state.error
+    error: state.error.message
   }
-    
+
   };
 
 const mapDispatchToProps = {
